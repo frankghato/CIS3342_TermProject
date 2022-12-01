@@ -33,7 +33,8 @@
             <asp:TextBox ID="tboxBillingAddress" runat="server"></asp:TextBox>
         </p>
         <p>
-            Security Questions: </p>
+            Security Questions:
+        </p>
         <p>
             Question1:
         </p>
@@ -51,6 +52,7 @@
         <p>
             <asp:TextBox ID="tboxQuestion3" runat="server"></asp:TextBox>
         </p>
+        <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" />
     </form>
 </body>
 </html>
