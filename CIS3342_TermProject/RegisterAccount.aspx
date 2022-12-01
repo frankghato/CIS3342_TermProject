@@ -17,12 +17,18 @@
             <asp:TextBox ID="tboxUsername" runat="server"></asp:TextBox>
         </p>
         <p>
-            Password:
-            <asp:TextBox ID="tboxPassword" runat="server"></asp:TextBox>
+            First Name:
+            <asp:TextBox ID="tboxFirstName" runat="server"></asp:TextBox>
         </p>
         <p>
-            Phone Number:
-            <asp:TextBox ID="tboxPhoneNumber" runat="server"></asp:TextBox>
+            Last Name:
+            <asp:TextBox ID="tboxLastName" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            Password: <asp:TextBox ID="tboxPassword" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            Phone Number: <asp:TextBox ID="tboxPhoneNumber" runat="server"></asp:TextBox>
         </p>
         <p>
             Home Address:
