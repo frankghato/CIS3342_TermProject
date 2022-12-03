@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIS3342_TermProject", "CIS3342_TermProject\CIS3342_TermProject.csproj", "{65E1E9A7-98DC-40AF-87A5-2E33F05C380D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermProjectClassLibrary", "TermProjectClassLibrary\TermProjectClassLibrary.csproj", "{783FF2AA-B2DD-43D7-83F2-536D311E1740}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermProjectLibrary", "TermProjectClassLibrary\TermProjectLibrary.csproj", "{783FF2AA-B2DD-43D7-83F2-536D311E1740}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,13 +6,14 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TermProjectLibrary;
 
 namespace CIS3342_TermProject
 {
     public partial class RegisterAccount : System.Web.UI.Page
     {
         ArrayList profileImageKeys = new ArrayList();
-
+        EmailSender emailSender = new EmailSender();
         protected void Page_Load(object sender, EventArgs e)
         {
             lblErrors.Text = "";
@@ -111,9 +112,16 @@ namespace CIS3342_TermProject
             }
             else
             {
-                lblErrors.Text = "Account successfully created!";
-                lblErrors.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6fd656");
-                EmailSender.SendWelcomeEmail(email);
+                bool sent = emailSender.SendConfirmationEmail(email, "1");
+                if(sent)
+                {
+                    lblErrors.Text = "Account successfully created!<br>Please enter the confirmation code to confirm your email address:";
+                    lblErrors.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6fd656");
+                }
+                else
+                {
+                    lblErrors.Text = "Email could not be sent.";
+                }
             }    
         }
     }

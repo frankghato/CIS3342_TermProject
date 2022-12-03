@@ -7,20 +7,30 @@ namespace TermProjectLibrary
 {
     public class EmailSender
     {
-        SmtpClient mailClient = new SmtpClient("mail.socialmedia.com", 25);
-
-        public void SendWelcomeEmail(string email)
+        public EmailSender()
         {
-            mailClient.Credentials = new System.Net.NetworkCredential("info@socialmedia.com", "myIDPassword");
-            mailClient.UseDefaultCredentials = true;
-            mailClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-            mailClient.EnableSsl = true;
-            MailMessage message = new MailMessage();
 
-            message.From = new MailAddress("info@socialmedia.com", "Social Media");
-            message.To.Add(new MailAddress(email));
+        }
 
-            mailClient.Send(message);
+        public Boolean SendConfirmationEmail(string emailAddress, string code)
+        {
+            try
+            {
+                MailMessage message = new MailMessage();
+                message.To.Add(emailAddress);
+                message.From = new MailAddress("mail@socialmedia.com");
+                message.Subject = "Confirm your email";
+                message.Body = "Here is your confirmation code: " + code;
+                message.IsBodyHtml = true;
+                message.Priority = MailPriority.Normal;
+                SmtpClient mailClient = new SmtpClient("smtp.temple.edu");
+                mailClient.Send(message);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
 
     }
