@@ -24,6 +24,15 @@ namespace CIS3342_TermProject
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// lblErrors control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrors;
+
+        /// <summary>
         /// tboxEmailAddress control.
         /// </summary>
         /// <remarks>
@@ -69,6 +78,15 @@ namespace CIS3342_TermProject
         protected global::System.Web.UI.WebControls.TextBox tboxPassword;
 
         /// <summary>
+        /// tboxConfirmPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tboxConfirmPassword;
+
+        /// <summary>
         /// tboxPhoneNumber control.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,24 @@ namespace CIS3342_TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tboxBillingAddress;
+
+        /// <summary>
+        /// ddlProfileImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProfileImage;
+
+        /// <summary>
+        /// profileImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage profileImage;
 
         /// <summary>
         /// tboxQuestion1 control.

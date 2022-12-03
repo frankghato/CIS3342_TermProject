@@ -6,59 +6,89 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="background:#1e1f21; color:white;">
     <form id="form1" runat="server">
-        <div>
-            Email Address:
-            <asp:TextBox ID="tboxEmailAddress" runat="server"></asp:TextBox>
+        
+        <div style="padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center;">
+            <h1>All fields are required to create an account.</h1>
+            <p style="color: #ed5151;">
+                <asp:Label ID="lblErrors" runat="server" Text="Label"></asp:Label>
+            </p>
         </div>
-        <p>
-            Username:
-            <asp:TextBox ID="tboxUsername" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            First Name:
-            <asp:TextBox ID="tboxFirstName" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            Last Name:
-            <asp:TextBox ID="tboxLastName" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            Password: <asp:TextBox ID="tboxPassword" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            Phone Number: <asp:TextBox ID="tboxPhoneNumber" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            Home Address:
-            <asp:TextBox ID="tboxHomeAddress" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            Billing Address:
-            <asp:TextBox ID="tboxBillingAddress" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            Security Questions:
-        </p>
-        <p>
-            Question1:
-        </p>
-        <p>
-            <asp:TextBox ID="tboxQuestion1" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            Question2:
-        </p>
-        <p>
-            <asp:TextBox ID="tboxQuestion2" runat="server"></asp:TextBox>
-        </p>
-        <p>
-            Question3:</p>
-        <p>
-            <asp:TextBox ID="tboxQuestion3" runat="server"></asp:TextBox>
-        </p>
-        <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" />
+        
+        <div style="padding-top:5px;padding-bottom:5px;background :#7485a1; color:white; width:55%; margin:0 auto;margin-top:25px; text-align:center;">
+            <h1>Account Information</h1>
+            <table>
+                <tr>
+                    <th>
+                        Email Address:
+                        <asp:TextBox ID="tboxEmailAddress" runat="server"></asp:TextBox>
+                    </th>
+                    <th>
+                        Username:
+                        <asp:TextBox ID="tboxUsername" runat="server"></asp:TextBox>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        First Name:
+                        <asp:TextBox ID="tboxFirstName" runat="server"></asp:TextBox>
+                    </th>
+                    <th>
+                        Last Name:
+                        <asp:TextBox ID="tboxLastName" runat="server"></asp:TextBox>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Password: <asp:TextBox ID="tboxPassword" runat="server"></asp:TextBox>
+                    </th>
+                    <th>
+                        Confirm Password: <asp:TextBox ID="tboxConfirmPassword" runat="server"></asp:TextBox>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        
+        <div style="padding-top:5px;padding-bottom:5px;background :#7485a1; color:white; width:55%; margin:0 auto;margin-top:25px; text-align:center; ">
+            <h1>Billing Information</h1>
+            <table>
+                <tr>
+                    <th>
+                        Phone Number: <asp:TextBox ID="tboxPhoneNumber" runat="server"></asp:TextBox>
+                    </th>
+                    <th>
+                        Home Address:
+                        <asp:TextBox ID="tboxHomeAddress" runat="server"></asp:TextBox>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Billing Address:
+                        <asp:TextBox ID="tboxBillingAddress" runat="server"></asp:TextBox>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div style="padding-top:5px;padding-bottom:5px;background :#7485a1; color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center; ">
+            Select Profile Image:
+            <asp:DropDownList ID="ddlProfileImage" runat="server" OnSelectedIndexChanged="ddlProfileImage_SelectedIndexChanged">
+            </asp:DropDownList>
+            <br /><img id="profileImage" src="" style="width:20%;" runat="server"/>
+        </div>
+
+        <div style="padding-top:5px;padding-bottom:5px;background :#7485a1; color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center; ">
+            <h1>Security Questions</h1>
+            Question 1: <br /><asp:TextBox ID="tboxQuestion1" runat="server"></asp:TextBox><br />
+            Question 2: <br /><asp:TextBox ID="tboxQuestion2" runat="server"></asp:TextBox><br />
+            Question 3: <br /><asp:TextBox ID="tboxQuestion3" runat="server"></asp:TextBox>
+        </div>
+        
+        <div style="padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center; ">
+            <asp:Button ID="btnCreateAccount" runat="server" Text="Create Account" OnClick="btnCreateAccount_Click" />
+            <br />
+        </div>
     </form>
 </body>
 </html>
