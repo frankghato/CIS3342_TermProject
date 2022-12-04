@@ -41,7 +41,7 @@ namespace TermProjectAPI.Controllers
             return Posts;
         }
 
-        [HttpGet("{username}")]
+        [HttpGet("{username}")] // Get all posts by username
         public List<Post> GetPostsByUser(string username)
         {
             DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
@@ -68,18 +68,60 @@ namespace TermProjectAPI.Controllers
             return Posts;
         }
 
-        [HttpGet("GetUsername/{email}")]
+        [HttpGet("GetUsername/{email}")] // Get a username from an Email
         public string GetUsernameFromEmail(string email)
         {
             DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
             SqlCommand objCommand = new SqlCommand();
 
             objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
-            objCommand.CommandText = "TP_GetPostsFromUsername";
+            objCommand.CommandText = "TP_GetUsernameFromEmail";
             objCommand.Parameters.AddWithValue("@theEmail", email);
 
             DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
-            return myDS.Tables[0].Rows[0].ToString();
+            string user = "";
+            if (myDS.Tables[0].Rows.Count != 0)
+            {
+                DataRow record = myDS.Tables[0].Rows[0];
+               user = record["Username"].ToString();
+            }
+            return user;
+        }
+
+        [HttpPut("LikePost")] // Like a post
+        public Boolean LikePost([FromBody] Post p)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_LikePost";
+            objCommand.Parameters.AddWithValue("@thePostID", p.Id);
+
+            int updated = objDB.DoUpdateUsingCmdObj(objCommand);
+            if (updated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        [HttpPut("DislikePost")] // Dislike a post
+        public Boolean DislikePost([FromBody] Post p)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_DislikePost";
+            objCommand.Parameters.AddWithValue("@thePostID", p.Id);
+
+            int updated = objDB.DoUpdateUsingCmdObj(objCommand);
+            if (updated > 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

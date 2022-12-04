@@ -6,5 +6,5 @@
     <asp:Label ID="lblLikes" runat="server"></asp:Label><br />
     <asp:Label ID="lblDislikes" runat="server"></asp:Label><br />
     <asp:Button ID="btnLike" runat="server" Text="Like" OnClick="btnLike_Click"/>
-    <asp:Button ID="btnDislike" runat="server" Text="Dislike"/>
+    <asp:Button ID="btnDislike" runat="server" Text="Dislike" OnClick="btnDislike_Click"/>
 </div>
