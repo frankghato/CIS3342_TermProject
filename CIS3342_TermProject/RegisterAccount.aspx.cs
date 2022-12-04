@@ -16,22 +16,23 @@ namespace CIS3342_TermProject
         EmailSender emailSender = new EmailSender();
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblErrors.Text = "";
-            lblErrors.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ed5151");
-
-            for (int i = 1; i < 10; i++)
+            if (!IsPostBack)
             {
-                profileImageKeys.Add(i);
+                lblErrors.Text = "";
+                lblErrors.ForeColor = System.Drawing.ColorTranslator.FromHtml("#ed5151");
+
+                for (int i = 1; i <= 10; i++)
+                {
+                    ddlProfileImage.Items.Add(i.ToString());
+                }
+                profileImage.ImageUrl = "assets/profileimages/" + ddlProfileImage.SelectedValue + ".bmp";
             }
-            ddlProfileImage.DataSource = profileImageKeys;
-            ddlProfileImage.DataBind();
-            profileImage.Src = "assets/profileimages/" + ddlProfileImage.SelectedValue + ".bmp";
 
         }
 
         protected void ddlProfileImage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            profileImage.Src = "assets/profileimages/" + ddlProfileImage.SelectedValue + ".bmp";
+            profileImage.ImageUrl = "assets/profileimages/" + ddlProfileImage.SelectedValue + ".bmp";
         }
 
         protected void btnCreateAccount_Click(object sender, EventArgs e)

@@ -73,9 +73,10 @@
 
         <div style="padding-top:5px;padding-bottom:5px;background :#7485a1; color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center; ">
             Select Profile Image:
-            <asp:DropDownList ID="ddlProfileImage" runat="server" OnSelectedIndexChanged="ddlProfileImage_SelectedIndexChanged">
+            <asp:DropDownList ID="ddlProfileImage" runat="server" OnSelectedIndexChanged="ddlProfileImage_SelectedIndexChanged" AutoPostBack="true">
             </asp:DropDownList>
-            <br /><img id="profileImage" src="" style="width:20%;" runat="server"/>
+            <br />
+            <asp:Image runat="server" style="width:20%;" ID="profileImage" ImageUrl="assets/profileimages/1.bmp"/>
         </div>
 
         <div style="padding-top:5px;padding-bottom:5px;background :#7485a1; color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center; ">
