@@ -112,6 +112,7 @@ namespace CIS3342_TermProject
             }
             else
             {
+                
                 bool sent = emailSender.SendConfirmationEmail(email, "1");
                 if(sent)
                 {
