@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TermProjectLibrary
 {
-    class Post
+    public class Post
     {
         private int id;
         private int likes;
