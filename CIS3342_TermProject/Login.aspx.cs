@@ -55,9 +55,16 @@ namespace CIS3342_TermProject
 
                 string encryptedPw = Encryption.EncryptPassword(tboxPassword.Text);
 
+                if(pw.Equals(""))
+                {
+                    lblErrors.Text = "*Your username is incorrect.";
+                    return;
+                }
+
                 if(!pw.Equals(encryptedPw))
                 {
                     lblErrors.Text = "*Your password is incorrect.";
+                    return;
                 }
                 else
                 {
@@ -67,6 +74,11 @@ namespace CIS3342_TermProject
                 }
             }
 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RegisterAccount.aspx");
         }
     }
 }
