@@ -33,22 +33,31 @@ namespace CIS3342_TermProject
         protected global::System.Web.UI.WebControls.Label lblErrors;
 
         /// <summary>
-        /// tboxEmailAddress control.
+        /// tboxUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tboxEmailAddress;
+        protected global::System.Web.UI.WebControls.TextBox tboxUsername;
 
         /// <summary>
-        /// TextBox1 control.
+        /// tboxPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox tboxPassword;
+
+        /// <summary>
+        /// btnLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLogin;
 
         /// <summary>
         /// btnForgotPassword control.

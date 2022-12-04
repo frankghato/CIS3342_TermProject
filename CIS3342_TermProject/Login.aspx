@@ -16,10 +16,12 @@
         </div>
 
         <div style="padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center;">
-            Email Address:
-            <asp:TextBox ID="tboxEmailAddress" runat="server"></asp:TextBox><br />
+            Username:
+            <asp:TextBox ID="tboxUsername" runat="server"></asp:TextBox><br />
             Password:
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="tboxPassword" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" />
         </div>
 
 
