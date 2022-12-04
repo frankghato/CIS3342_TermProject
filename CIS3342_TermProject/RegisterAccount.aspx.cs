@@ -116,7 +116,7 @@ namespace CIS3342_TermProject
                 bool sent = emailSender.SendConfirmationEmail(email, "1");
                 if(sent)
                 {
-                    lblErrors.Text = "Account successfully created!<br>Please enter the confirmation code to confirm your email address:";
+                    lblErrors.Text = "Account successfully created!<br>Please check your email for the confirmation link.";
                     lblErrors.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6fd656");
                 }
                 else

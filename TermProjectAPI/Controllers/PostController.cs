@@ -67,5 +67,19 @@ namespace TermProjectAPI.Controllers
             }
             return Posts;
         }
+
+        [HttpGet("GetUsername/{email}")]
+        public string GetUsernameFromEmail(string email)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_GetPostsFromUsername";
+            objCommand.Parameters.AddWithValue("@theEmail", email);
+
+            DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
+            return myDS.Tables[0].Rows[0].ToString();
+        }
     }
 }
