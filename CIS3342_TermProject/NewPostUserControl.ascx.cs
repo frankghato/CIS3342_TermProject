@@ -7,34 +7,39 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TermProjectLibrary;
 
 namespace CIS3342_TermProject
 {
-    public partial class EmailConfirmation : System.Web.UI.Page
+    public partial class NewPostUserControl : System.Web.UI.UserControl
     {
-        string email;
+        public string username;
         protected void Page_Load(object sender, EventArgs e)
         {
-            email = Request.QueryString["Email"];
-            if (email == null || email.Equals(""))
+
+        }
+
+        protected void btnPost_Click(object sender, EventArgs e)
+        {
+            if (txtNewPost.Text != "")
             {
-                Response.Redirect("Login.aspx");
-            }
-            else
-            {
-                welcomeMessage.InnerText = email + ", thank you for confirming your account.";
+                Post p = new Post();
+                p.Username = username;
+                p.Content = txtNewPost.Text;
+                p.Likes = 0;
+                p.Dislikes = 0;
 
                 JavaScriptSerializer js = new JavaScriptSerializer();
-                String jsonPost = js.Serialize(email);
+                String jsonPost = js.Serialize(p);
                 try
                 {
-                    WebRequest request = WebRequest.Create("https://localhost:44382/api/user/ConfirmEmail");
-                    request.Method = "PUT";
-                    request.ContentLength = jsonEmail.Length;
+                    WebRequest request = WebRequest.Create("https://localhost:44382/api/post/AddPost");
+                    request.Method = "POST";
+                    request.ContentLength = jsonPost.Length;
                     request.ContentType = "application/json";
 
                     StreamWriter writer = new StreamWriter(request.GetRequestStream());
-                    writer.Write(jsonEmail);
+                    writer.Write(jsonPost);
                     writer.Flush();
                     writer.Close();
 
@@ -48,9 +53,9 @@ namespace CIS3342_TermProject
 
                 catch (Exception ex)
                 {
-                    welcomeMessage.InnerText = "Error: " + ex.Message;
+                    txtNewPost.Text = "Error: " + ex.Message;
                 }
-
+                Response.Redirect("Posts.aspx");
             }
         }
     }

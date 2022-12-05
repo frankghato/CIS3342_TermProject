@@ -97,5 +97,35 @@ namespace TermProjectAPI.Controllers
             }
             return false;
         }
+
+        [HttpPost("AddUser")] // Post a new post
+        public Boolean AddUser([FromBody] UserAccount u)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_AddUser";
+            objCommand.Parameters.AddWithValue("@theUsername", u.Username);
+            objCommand.Parameters.AddWithValue("@theFirstName", u.FirstName);
+            objCommand.Parameters.AddWithValue("@theLastName", u.LastName);
+            objCommand.Parameters.AddWithValue("@theEmail", u.Email);
+            objCommand.Parameters.AddWithValue("@theProfileImageKey", u.ProfileImageKey);
+            objCommand.Parameters.AddWithValue("@thePassword", u.Password);
+            objCommand.Parameters.AddWithValue("@theHomeAddress", u.HomeAddress);
+            objCommand.Parameters.AddWithValue("@theBillingAddress", u.BillingAddress);
+            objCommand.Parameters.AddWithValue("@thePhoneNumber", u.PhoneNumber);
+            objCommand.Parameters.AddWithValue("@theIsEmailConfirmed", u.IsEmailConfirmed);
+            objCommand.Parameters.AddWithValue("@theSecurityQuestion1Answer", u.SecurityQuestion1Answer);
+            objCommand.Parameters.AddWithValue("@theSecurityQuestion2Answer", u.SecurityQuestion2Answer);
+            objCommand.Parameters.AddWithValue("@theSecurityQuestion3Answer", u.SecurityQuestion3Answer);
+
+            int updated = objDB.DoUpdateUsingCmdObj(objCommand);
+            if (updated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

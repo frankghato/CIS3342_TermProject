@@ -47,6 +47,7 @@ namespace CIS3342_TermProject
             {
                 lblContent.Text = "Error: " + ex.Message;
             }
+            Response.Redirect("Posts.aspx");
         }
 
         protected void btnDislike_Click(object sender, EventArgs e)
@@ -77,6 +78,7 @@ namespace CIS3342_TermProject
             {
                 lblContent.Text = "Error: " + ex.Message;
             }
+            Response.Redirect("Posts.aspx");
         }
 
         public void showPost()

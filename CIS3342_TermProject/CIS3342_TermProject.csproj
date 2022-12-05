@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="EmailConfirmation.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="NewPostUserControl.ascx" />
     <Content Include="Posts.aspx" />
     <Content Include="PostsService.asmx" />
     <Content Include="PostsUserControl.ascx" />
@@ -91,6 +92,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewPostUserControl.ascx.cs">
+      <DependentUpon>NewPostUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewPostUserControl.ascx.designer.cs">
+      <DependentUpon>NewPostUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Posts.aspx.cs">
       <DependentUpon>Posts.aspx</DependentUpon>

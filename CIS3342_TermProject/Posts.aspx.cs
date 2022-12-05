@@ -16,7 +16,16 @@ namespace CIS3342_TermProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            WebRequest request = WebRequest.Create("https://localhost:44382/api/post");
+            NewPostUserControl newPostControl = (NewPostUserControl)LoadControl("NewPostUserControl.ascx");
+            newPostControl.username = "JacobJablonski";
+            Form.Controls.Add(newPostControl);
+
+            loadPosts("https://localhost:44382/api/post");
+        }
+
+        public void loadPosts(string apiurl)
+        {
+            WebRequest request = WebRequest.Create(apiurl);
             WebResponse response = request.GetResponse();
             Stream dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);
