@@ -64,11 +64,34 @@ namespace CIS3342_TermProject
         {
             if(tboxSecurityQuestionAnswer.Text.Equals(Session["answer"].ToString()))
             {
-                lblErrors.Text = "An email has been sent to you containing your login information.";
+                loginInformationDiv.Style.Add("visibility", "visible");
+                WebRequest request = WebRequest.Create("https://localhost:44382/api/user/GetUsername/" + Session["email"].ToString());
+                WebResponse response = request.GetResponse();
+                Stream ds = response.GetResponseStream();
+                StreamReader reader = new StreamReader(ds);
+                String data = reader.ReadToEnd();
+                reader.Close();
+                response.Close();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string username = js.Deserialize<string>(data);
+
+                
+                request = WebRequest.Create("https://localhost:44382/api/user/GetPasswordFromUsername/" + username);
+                response = request.GetResponse();
+                ds = response.GetResponseStream();
+                reader = new StreamReader(ds);
+                data = reader.ReadToEnd();
+                reader.Close();
+                response.Close();
+                js = new JavaScriptSerializer();
+                string password = js.Deserialize<string>(data);
+
+
+                loginInformation.InnerText = "Username: " + username + "<br>Password: " + password;
             }
             else
             {
-                lblErrors.Text = "Wrong answer bozo.";
+                lblErrors.Text = "*Your response to the security question was incorrect.";
             }
         }
 

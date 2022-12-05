@@ -45,6 +45,10 @@
                 <asp:Button ID="btnSubmitAnswer" runat="server" Text="Submit Answer" OnClick ="btnSubmitAnswer_Click" />
             </div>
 
+        <div id="loginInformationDiv" runat="server" style="visibility:hidden; padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center;">
+            <p id="loginInformation" runat="server"></p>
+        </div>
+
     </form>
 </body>
 </html>

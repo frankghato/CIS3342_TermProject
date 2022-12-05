@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TermProjectLibrary;
@@ -113,16 +116,41 @@ namespace CIS3342_TermProject
             }
             else
             {
-                
-                bool sent = emailSender.SendConfirmationEmail(email);
-                if(sent)
+                UserAccount user = new UserAccount(username, firstName, lastName, email, password, homeAddress, billingAddress, phoneNumber, ddlProfileImage.SelectedValue, "No", question1, question2, question3);
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                String jsonUser = js.Serialize(user);
+                try
                 {
-                    lblErrors.Text = "Account successfully created!<br>Please check your email for the confirmation link.";
-                    lblErrors.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6fd656");
+                    WebRequest request = WebRequest.Create("https://localhost:44382/api/user/AddUser");
+                    request.Method = "POST";
+                    request.ContentLength = jsonUser.Length;
+                    request.ContentType = "application/json";
+                    StreamWriter writer = new StreamWriter(request.GetRequestStream());
+                    writer.Write(jsonUser);
+                    writer.Flush();
+                    writer.Close();
+
+                    WebResponse response = request.GetResponse();
+                    Stream dataStream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(dataStream);
+                    String data = reader.ReadToEnd();
+                    reader.Close();
+                    response.Close();
+
+                    bool sent = emailSender.SendConfirmationEmail(email);
+                    if (sent)
+                    {
+                        lblErrors.Text = "Account successfully created!<br>Please check your email for the confirmation link.";
+                        lblErrors.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6fd656");
+                    }
+                    else
+                    {
+                        lblErrors.Text = "Email could not be sent.";
+                    }
                 }
-                else
+                catch(Exception ex)
                 {
-                    lblErrors.Text = "Email could not be sent.";
+                    lblErrors.Text = "Error: " + ex.Message;
                 }
             }    
         }
