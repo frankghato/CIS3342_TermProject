@@ -114,7 +114,7 @@ namespace CIS3342_TermProject
             else
             {
                 
-                bool sent = emailSender.SendConfirmationEmail(email, "1");
+                bool sent = emailSender.SendConfirmationEmail(email);
                 if(sent)
                 {
                     lblErrors.Text = "Account successfully created!<br>Please check your email for the confirmation link.";

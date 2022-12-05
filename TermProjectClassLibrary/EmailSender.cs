@@ -12,7 +12,7 @@ namespace TermProjectLibrary
 
         }
 
-        public Boolean SendConfirmationEmail(string emailAddress, string code)
+        public Boolean SendConfirmationEmail(string emailAddress)
         {
             try
             {
@@ -20,7 +20,7 @@ namespace TermProjectLibrary
                 message.To.Add(emailAddress);
                 message.From = new MailAddress("mail@socialmedia.com");
                 message.Subject = "Confirm your email";
-                message.Body = "Here is your confirmation code: " + code;
+                message.Body = "Please click this link to confirm your email address: EmailConfirmation.aspx?Email="+emailAddress;
                 message.IsBodyHtml = true;
                 message.Priority = MailPriority.Normal;
                 SmtpClient mailClient = new SmtpClient("smtp.temple.edu");

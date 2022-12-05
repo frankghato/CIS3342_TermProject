@@ -73,6 +73,7 @@
     <Content Include="PostsService.asmx" />
     <Content Include="PostsUserControl.ascx" />
     <Content Include="RegisterAccount.aspx" />
+    <Content Include="SecurityQuestionService.asmx" />
     <Content Include="UsersService.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -116,6 +117,10 @@
     </Compile>
     <Compile Include="RegisterAccount.aspx.designer.cs">
       <DependentUpon>RegisterAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityQuestionService.asmx.cs">
+      <DependentUpon>SecurityQuestionService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UsersService.asmx.cs">
       <DependentUpon>UsersService.asmx</DependentUpon>

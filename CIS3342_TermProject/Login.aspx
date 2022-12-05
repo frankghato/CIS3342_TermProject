@@ -33,6 +33,18 @@
             <br />
         </div>
 
+        <div id="retrieveInfoDiv" runat="server" style="visibility:hidden; padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center; ">
+            Enter your email:
+            <asp:TextBox ID="tboxEmail" runat="server"></asp:TextBox><br />
+            <asp:Button ID="btnSubmitEmail" runat="server" Text="Submit Email" OnClick="btnSubmitEmail_Click" /><br />
+        </div>
+
+        <div id="securityQuestionDiv" runat="server" style="visibility:hidden; padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center;">
+                <p id="securityQuestion" runat="server"></p>
+                <asp:TextBox ID="tboxSecurityQuestionAnswer" runat="server"></asp:TextBox><br />
+                <asp:Button ID="btnSubmitAnswer" runat="server" Text="Submit Answer" OnClick ="btnSubmitAnswer_Click" />
+            </div>
+
     </form>
 </body>
 </html>

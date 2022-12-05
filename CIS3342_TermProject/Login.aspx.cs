@@ -13,6 +13,8 @@ namespace CIS3342_TermProject
 {
     public partial class Login : System.Web.UI.Page
     {
+        SecurityQuestionService pxy = new SecurityQuestionService();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lblErrors.Text = "";
@@ -20,12 +22,54 @@ namespace CIS3342_TermProject
 
         protected void btnForgotPassword_Click(object sender, EventArgs e)
         {
-            lblErrors.Text = "An email has been sent containing your password.";
+            retrieveInfoDiv.Style.Add("visibility", "visible");
         }
 
         protected void btnForgotUsername_Click(object sender, EventArgs e)
         {
-            lblErrors.Text = "An email has been sent containing your username.";
+            retrieveInfoDiv.Style.Add("visibility", "visible");
+        }
+
+        protected void btnSubmitEmail_Click(object sender, EventArgs e)
+        {
+            if (tboxEmail.Text.Equals(""))
+            {
+                lblErrors.Text = "*You must enter an email.";
+                return;
+            }
+
+            Session["email"] = tboxEmail.Text;
+            //generate random num 1-3 and get security question
+            //get security question answer from email
+            //compare answers
+            //check if equal, if so send email with requested information, if false error message
+            Random rand = new Random();
+            int questionID = rand.Next(1, 4);
+            securityQuestion.InnerText = pxy.GetSecurityQuestionByID(questionID);
+            string correctAnswer = pxy.GetSecurityQuestionAnswerByEmailAndQuestionID(tboxEmail.Text, questionID);
+
+            if (correctAnswer.Equals("-1"))
+            {
+                lblErrors.Text = "*There was no record found matching your email addres.";
+                return;
+            }
+            retrieveInfoDiv.Style.Add("visibility", "hidden");
+            securityQuestionDiv.Style.Add("visibility", "visible");
+            Session["answer"] = correctAnswer;
+
+            //lblErrors.Text = Session["email"].ToString();
+        }
+
+        protected void btnSubmitAnswer_Click(object sender, EventArgs e)
+        {
+            if(tboxSecurityQuestionAnswer.Text.Equals(Session["answer"].ToString()))
+            {
+                lblErrors.Text = "An email has been sent to you containing your login information.";
+            }
+            else
+            {
+                lblErrors.Text = "Wrong answer bozo.";
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
