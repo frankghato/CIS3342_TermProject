@@ -39,10 +39,6 @@ namespace CIS3342_TermProject
             }
 
             Session["email"] = tboxEmail.Text;
-            //generate random num 1-3 and get security question
-            //get security question answer from email
-            //compare answers
-            //check if equal, if so send email with requested information, if false error message
             Random rand = new Random();
             int questionID = rand.Next(1, 4);
             securityQuestion.InnerText = pxy.GetSecurityQuestionByID(questionID);
@@ -85,7 +81,7 @@ namespace CIS3342_TermProject
                 response.Close();
                 js = new JavaScriptSerializer();
                 string password = js.Deserialize<string>(data);
-
+                password = Encryption.DecryptPassword(password);
 
                 loginInformation.InnerText = "Username: " + username + "<br>Password: " + password;
             }
