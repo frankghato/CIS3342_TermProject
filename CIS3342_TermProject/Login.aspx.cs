@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TermProjectClassLibrary;
 using TermProjectLibrary;
 
 namespace CIS3342_TermProject
@@ -151,7 +152,7 @@ namespace CIS3342_TermProject
 
                     UserAccount user = new UserAccount(tboxUsername.Text, email, tboxPassword.Text);
 
-                    
+                    Session["SerializedAccount"] = Serialization.Serialize(user);
 
                     Response.Redirect("Posts.aspx?Username=" + tboxUsername.Text);
                 }

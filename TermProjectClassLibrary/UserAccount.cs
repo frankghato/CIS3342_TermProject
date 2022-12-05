@@ -78,9 +78,5 @@ namespace TermProjectLibrary
             password = (string)info.GetValue("Password", typeof(string));
         }
 
-        public string Serialize()
-        {
-            return "{email: " + this.email + "; username: " + this.username + "; password: " + this.password + "}";
-        }
     }
 }
