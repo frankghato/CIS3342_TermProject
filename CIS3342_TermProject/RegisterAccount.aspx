@@ -12,6 +12,7 @@
     <form id="form1" runat="server">
         
         <div style="padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center;">
+            <a style="color:white;" href="Login.aspx">Back to Login</a>
             <h1>All fields are required to create an account.</h1>
             <p style="color: #ed5151;">
                 <asp:Label ID="lblErrors" runat="server" Text="Label"></asp:Label>
