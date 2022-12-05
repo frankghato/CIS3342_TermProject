@@ -26,6 +26,22 @@ namespace CIS3342_TermProject
                 tboxUsername.Text = loginCookie.Values["Username"];
                 tboxPassword.Text = Encryption.DecryptPassword(loginCookie.Values["Password"]);
             }
+            if(Request.Cookies["LoginCookie"] != null)
+            {
+                btnClearCookie.Visible = true;
+            }
+            else
+            {
+                btnClearCookie.Visible = false;
+            }
+        }
+
+        protected void btnClearCookie_Click(object sender, EventArgs e)
+        {
+            HttpCookie loginCookie = Request.Cookies["LoginCookie"];
+            loginCookie.Expires = DateTime.Now.AddDays(-1d);
+            Response.Cookies.Add(loginCookie);
+            btnClearCookie.Visible = false;
         }
 
         protected void btnForgotPassword_Click(object sender, EventArgs e)

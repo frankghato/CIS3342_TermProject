@@ -49,6 +49,9 @@
             <p id="loginInformation" runat="server"></p>
         </div>
 
+        <div>
+            <asp:Button ID="btnClearCookie" runat="server" Text="Clear Login Cookie" OnClick="btnClearCookie_Click" />
+        </div>
     </form>
 </body>
 </html>
