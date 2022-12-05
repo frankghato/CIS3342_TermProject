@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace TermProjectLibrary
 {
-    public class UserAccount
+    [Serializable()]
+    public class UserAccount : ISerializable
     {
         private string username;
         private string firstName;
@@ -21,6 +24,13 @@ namespace TermProjectLibrary
         public UserAccount()
         {
 
+        }
+
+        public UserAccount(string username, string email, string password)
+        {
+            this.username = username;
+            this.email = email;
+            this.password = password;
         }
 
         public UserAccount(string username, string firstName, string lastName, string email, string password, string homeAddress, string billingAddress, string phoneNumber, string profileImageKey, string isEmailConfirmed, string securityQuestion1Answer, string securityQuestion2Answer, string securityQuestion3Answer)
@@ -53,5 +63,24 @@ namespace TermProjectLibrary
         public string SecurityQuestion1Answer { get => securityQuestion1Answer; set => securityQuestion1Answer = value; }
         public string SecurityQuestion2Answer { get => securityQuestion2Answer; set => securityQuestion2Answer = value; }
         public string SecurityQuestion3Answer { get => securityQuestion3Answer; set => securityQuestion3Answer = value; }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Username", username);
+            info.AddValue("Email", email);
+            info.AddValue("Password", password);
+        }
+
+        public UserAccount(SerializationInfo info, StreamingContext context)
+        {
+            username = (string)info.GetValue("Username", typeof(string));
+            email = (string)info.GetValue("Email", typeof(string));
+            password = (string)info.GetValue("Password", typeof(string));
+        }
+
+        public string Serialize()
+        {
+            return "{email: " + this.email + "; username: " + this.username + "; password: " + this.password + "}";
+        }
     }
 }
