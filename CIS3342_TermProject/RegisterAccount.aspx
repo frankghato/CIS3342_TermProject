@@ -5,6 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="scripts/FormValidation.js" type="text/javascript"></script>
 </head>
 <body style="background:#1e1f21; color:white;">
     <form id="form1" runat="server">

@@ -74,6 +74,7 @@
     <Content Include="PostsService.asmx" />
     <Content Include="PostsUserControl.ascx" />
     <Content Include="RegisterAccount.aspx" />
+    <Content Include="scripts\FormValidation.js" />
     <Content Include="SecurityQuestionService.asmx" />
     <Content Include="UsersService.asmx" />
     <Content Include="Web.config" />
