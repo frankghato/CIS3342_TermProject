@@ -87,5 +87,24 @@ namespace CIS3342_TermProject
 
             return "-1";
         }
+
+        [WebMethod]
+        public Boolean Unfollow(string username, string account)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_UnfollowUsername";
+            objCommand.Parameters.AddWithValue("@theUsername", account);
+            objCommand.Parameters.AddWithValue("@theUsernameToUnfollow", username);
+
+            int updated = objDB.DoUpdateUsingCmdObj(objCommand);
+            if (updated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
