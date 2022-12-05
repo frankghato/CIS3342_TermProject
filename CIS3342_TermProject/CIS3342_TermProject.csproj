@@ -71,10 +71,13 @@
     <Content Include="Login.aspx" />
     <Content Include="NewPostUserControl.ascx" />
     <Content Include="Posts.aspx" />
+    <Content Include="PostsService.asmx" />
     <Content Include="PostsUserControl.ascx" />
     <Content Include="Profile.aspx" />
     <Content Include="RegisterAccount.aspx" />
     <Content Include="scripts\FormValidation.js" />
+    <Content Include="SecurityQuestionService.asmx" />
+    <Content Include="UsersService.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +109,10 @@
     <Compile Include="Posts.aspx.designer.cs">
       <DependentUpon>Posts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PostsService.asmx.cs">
+      <DependentUpon>PostsService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PostsUserControl.ascx.cs">
       <DependentUpon>PostsUserControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -127,6 +134,14 @@
     </Compile>
     <Compile Include="RegisterAccount.aspx.designer.cs">
       <DependentUpon>RegisterAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityQuestionService.asmx.cs">
+      <DependentUpon>SecurityQuestionService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UsersService.asmx.cs">
+      <DependentUpon>UsersService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
