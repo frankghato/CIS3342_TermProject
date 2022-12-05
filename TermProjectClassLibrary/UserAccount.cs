@@ -8,6 +8,7 @@ namespace TermProjectLibrary
         private string firstName;
         private string lastName;
         private string email;
+        private string password;
         private string homeAddress;
         private string billingAddress;
         private string phoneNumber;
@@ -21,6 +22,7 @@ namespace TermProjectLibrary
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
         public string Email { get => email; set => email = value; }
+        public string Password { get => password; set => password = value; }
         public string HomeAddress { get => homeAddress; set => homeAddress = value; }
         public string BillingAddress { get => billingAddress; set => billingAddress = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
