@@ -33,6 +33,10 @@
             <br />
         </div>
 
+        <div style="padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center;">
+            <asp:Button ID="btnClearCookie" runat="server" Text="Clear Login Cookie" OnClick="btnClearCookie_Click" />
+        </div>
+
         <div id="retrieveInfoDiv" runat="server" style="visibility:hidden; padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center; ">
             Enter your email:
             <asp:TextBox ID="tboxEmail" runat="server"></asp:TextBox><br />
@@ -47,10 +51,6 @@
 
         <div id="loginInformationDiv" runat="server" style="visibility:hidden; padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center;">
             <p id="loginInformation" runat="server"></p>
-        </div>
-
-        <div>
-            <asp:Button ID="btnClearCookie" runat="server" Text="Clear Login Cookie" OnClick="btnClearCookie_Click" />
         </div>
     </form>
 </body>

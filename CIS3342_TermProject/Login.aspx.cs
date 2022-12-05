@@ -42,6 +42,8 @@ namespace CIS3342_TermProject
             loginCookie.Expires = DateTime.Now.AddDays(-1d);
             Response.Cookies.Add(loginCookie);
             btnClearCookie.Visible = false;
+            tboxPassword.Text = "";
+            tboxUsername.Text = "";
         }
 
         protected void btnForgotPassword_Click(object sender, EventArgs e)
@@ -85,7 +87,7 @@ namespace CIS3342_TermProject
             if(tboxSecurityQuestionAnswer.Text.Equals(Session["answer"].ToString()))
             {
                 loginInformationDiv.Style.Add("visibility", "visible");
-                WebRequest request = WebRequest.Create("https://localhost:44382/api/user/GetUsername/" + Session["email"].ToString());
+                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/user/GetUsername/" + Session["email"].ToString());
                 WebResponse response = request.GetResponse();
                 Stream ds = response.GetResponseStream();
                 StreamReader reader = new StreamReader(ds);
@@ -93,10 +95,10 @@ namespace CIS3342_TermProject
                 reader.Close();
                 response.Close();
                 JavaScriptSerializer js = new JavaScriptSerializer();
-                string username = js.Deserialize<string>(data);
+                string username = data;
 
                 
-                request = WebRequest.Create("https://localhost:44382/api/user/GetPasswordFromUsername/" + username);
+                request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/user/GetPasswordFromUsername/" + username);
                 response = request.GetResponse();
                 ds = response.GetResponseStream();
                 reader = new StreamReader(ds);
@@ -104,10 +106,10 @@ namespace CIS3342_TermProject
                 reader.Close();
                 response.Close();
                 js = new JavaScriptSerializer();
-                string password = js.Deserialize<string>(data);
+                string password = data;
                 password = Encryption.DecryptPassword(password);
 
-                loginInformation.InnerText = "Username: " + username + "<br>Password: " + password;
+                loginInformation.InnerText = "Username: " + username + " Password: " + password;
             }
             else
             {
@@ -129,7 +131,7 @@ namespace CIS3342_TermProject
 
             if(lblErrors.Text.Equals(""))
             {
-                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252//api/user/GetPasswordFromUsername/" + tboxUsername.Text);
+                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/user/GetPasswordFromUsername/" + tboxUsername.Text);
                 WebResponse response = request.GetResponse();
                 Stream ds = response.GetResponseStream();
                 StreamReader reader = new StreamReader(ds);
@@ -138,9 +140,11 @@ namespace CIS3342_TermProject
                 response.Close();
                 JavaScriptSerializer js = new JavaScriptSerializer();
 
-                string pw = js.Deserialize<string>(data);
+                string pw = data;
 
                 string encryptedPw = Encryption.EncryptPassword(tboxPassword.Text);
+
+                //lblErrors.Text = "pw: " + pw + " epw: " + encryptedPw;
 
                 if(pw.Equals(""))
                 {

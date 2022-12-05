@@ -20,7 +20,7 @@ namespace CIS3342_TermProject
             newPostControl.username = "JacobJablonski";
             Form.Controls.Add(newPostControl);
 
-            loadPosts("https://localhost:44382/api/post");
+            loadPosts("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/post");
         }
 
         public void loadPosts(string apiurl)
