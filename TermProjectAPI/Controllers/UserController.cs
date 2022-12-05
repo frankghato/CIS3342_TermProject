@@ -40,42 +40,24 @@ namespace TermProjectAPI.Controllers
             return password;
         }
 
-        [HttpGet("GetIsEmailConfirmed/{username}")] // Get isemailconfirmed field of username
-        public string GetIsEmailConfirmed(string username)
+        [HttpGet("GetUsername/{email}")] // Get a username from an Email
+        public string GetUsernameFromEmail(string email)
         {
             DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
             SqlCommand objCommand = new SqlCommand();
 
             objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
-            objCommand.CommandText = "TP_GetIsEmailConfirmed";
-            objCommand.Parameters.AddWithValue("@theUsername", username);
+            objCommand.CommandText = "TP_GetUsernameFromEmail";
+            objCommand.Parameters.AddWithValue("@theEmail", email);
 
             DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
-            string isEmailConfirmed = "";
+            string user = "";
             if (myDS.Tables[0].Rows.Count != 0)
             {
                 DataRow record = myDS.Tables[0].Rows[0];
-                isEmailConfirmed = record["IsEmailConfirmed"].ToString();
+                user = record["Username"].ToString();
             }
-            return isEmailConfirmed;
-        }
-
-        [HttpPut("ConfirmEmail")] // confirm email of username
-        public Boolean ConfirmEmail(string username)
-        {
-            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
-            SqlCommand objCommand = new SqlCommand();
-
-            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
-            objCommand.CommandText = "TP_ConfirmEmail";
-            objCommand.Parameters.AddWithValue("@theUsername", username);
-
-            int updated = objDB.DoUpdateUsingCmdObj(objCommand);
-            if (updated > 0)
-            {
-                return true;
-            }
-            return false;
+            return user;
         }
     }
 }
