@@ -17,8 +17,14 @@ namespace CIS3342_TermProject
     {
         ArrayList profileImageKeys = new ArrayList();
         EmailSender emailSender = new EmailSender();
+        SecurityQuestionService pxy = new SecurityQuestionService();
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<string> questions = pxy.GetSecurityQuestions();
+            question1Text.InnerText = questions[0];
+            question2Text.InnerText = questions[1];
+            question3Text.InnerText = questions[2];
+
             if (!IsPostBack)
             {
                 lblErrors.Text = "";
@@ -29,6 +35,7 @@ namespace CIS3342_TermProject
                     ddlProfileImage.Items.Add(i.ToString());
                 }
                 profileImage.ImageUrl = "assets/profileimages/" + ddlProfileImage.SelectedValue + ".bmp";
+                
             }
 
         }

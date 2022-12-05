@@ -132,6 +132,15 @@ namespace CIS3342_TermProject
         protected global::System.Web.UI.WebControls.Image profileImage;
 
         /// <summary>
+        /// question1Text control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl question1Text;
+
+        /// <summary>
         /// tboxQuestion1 control.
         /// </summary>
         /// <remarks>
@@ -141,6 +150,15 @@ namespace CIS3342_TermProject
         protected global::System.Web.UI.WebControls.TextBox tboxQuestion1;
 
         /// <summary>
+        /// question2Text control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl question2Text;
+
+        /// <summary>
         /// tboxQuestion2 control.
         /// </summary>
         /// <remarks>
@@ -148,6 +166,15 @@ namespace CIS3342_TermProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tboxQuestion2;
+
+        /// <summary>
+        /// question3Text control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl question3Text;
 
         /// <summary>
         /// tboxQuestion3 control.

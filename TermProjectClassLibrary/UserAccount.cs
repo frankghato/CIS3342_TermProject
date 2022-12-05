@@ -18,6 +18,11 @@ namespace TermProjectLibrary
         private string securityQuestion2Answer;
         private string securityQuestion3Answer;
 
+        public UserAccount()
+        {
+
+        }
+
         public UserAccount(string username, string firstName, string lastName, string email, string password, string homeAddress, string billingAddress, string phoneNumber, string profileImageKey, string isEmailConfirmed, string securityQuestion1Answer, string securityQuestion2Answer, string securityQuestion3Answer)
         {
             this.username = username;

@@ -40,6 +40,32 @@ namespace CIS3342_TermProject
         }
 
         [WebMethod]
+        public List<string> GetSecurityQuestions()
+        {
+            List<string> questions = new List<string>();
+
+            DBConnect objDB = new DBConnect();
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_GetSecurityQuestions";
+
+            DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
+
+            if (myDS.Tables[0].Rows.Count <= 0)
+            {
+                return questions;
+            }
+
+            foreach (DataRow record in myDS.Tables[0].Rows)
+            {
+                questions.Add(record["Question"].ToString());
+            }
+
+            return questions;
+        }
+
+        [WebMethod]
         public List<string> GetSecurityQuestionAnswersByEmail(string email)
         {
             List<string> answers = new List<string>();

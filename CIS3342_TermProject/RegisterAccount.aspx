@@ -83,9 +83,9 @@
 
         <div style="padding-top:5px;padding-bottom:5px;background :#7485a1; color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center; ">
             <h1>Security Questions</h1>
-            Question 1: <br /><asp:TextBox ID="tboxQuestion1" runat="server"></asp:TextBox><br />
-            Question 2: <br /><asp:TextBox ID="tboxQuestion2" runat="server"></asp:TextBox><br />
-            Question 3: <br /><asp:TextBox ID="tboxQuestion3" runat="server"></asp:TextBox>
+            <p id="question1Text" runat="server">Question 1: </p><asp:TextBox ID="tboxQuestion1" runat="server"></asp:TextBox><br />
+            <p id="question2Text" runat="server">Question 1: </p><asp:TextBox ID="tboxQuestion2" runat="server"></asp:TextBox><br />
+            <p id="question3Text" runat="server">Question 1: </p><asp:TextBox ID="tboxQuestion3" runat="server"></asp:TextBox>
         </div>
         
         <div style="padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center; ">
