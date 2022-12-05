@@ -25,16 +25,16 @@ namespace CIS3342_TermProject
                 welcomeMessage.InnerText = email + ", thank you for confirming your account.";
 
                 JavaScriptSerializer js = new JavaScriptSerializer();
-                String jsonPost = js.Serialize(p);
+                String jsonEmail = js.Serialize(email);
                 try
                 {
                     WebRequest request = WebRequest.Create("https://localhost:44382/api/user/ConfirmEmail");
                     request.Method = "PUT";
-                    request.ContentLength = jsonPost.Length;
+                    request.ContentLength = jsonEmail.Length;
                     request.ContentType = "application/json";
 
                     StreamWriter writer = new StreamWriter(request.GetRequestStream());
-                    writer.Write(jsonPost);
+                    writer.Write(jsonEmail);
                     writer.Flush();
                     writer.Close();
 

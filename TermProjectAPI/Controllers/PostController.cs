@@ -103,5 +103,42 @@ namespace TermProjectAPI.Controllers
             }
             return false;
         }
+
+        [HttpPost("AddPost")] // Post a new post
+        public Boolean AddPost([FromBody] Post p)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_Addpost";
+            objCommand.Parameters.AddWithValue("@theUsername", p.Username);
+            objCommand.Parameters.AddWithValue("@theContent", p.Content);
+
+            int updated = objDB.DoUpdateUsingCmdObj(objCommand);
+            if (updated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        [HttpDelete("DeletePost/{id}")] // Post a new post
+        public Boolean DeletePost(int id)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_DeletePost";
+            objCommand.Parameters.AddWithValue("@theUsername", id);
+
+            int updated = objDB.DoUpdateUsingCmdObj(objCommand);
+            if (updated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
