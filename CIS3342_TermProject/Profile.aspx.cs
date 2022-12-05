@@ -80,5 +80,31 @@ namespace CIS3342_TermProject
             rptPosts.DataSource = posts;
             rptPosts.DataBind();
         }
+
+        protected void rptPosts_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            int row = e.Item.ItemIndex;
+            Label theID = (Label)rptPosts.Items[row].FindControl("lblID");
+            int id = int.Parse(theID.Text);
+
+            try
+            {
+                WebRequest request = WebRequest.Create("https://localhost:44382/api/post/DeletePost/" + id);
+                request.Method = "DELETE";
+
+                WebResponse response = request.GetResponse();
+                Stream dataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(dataStream);
+                String data = reader.ReadToEnd();
+                reader.Close();
+                response.Close();
+            }
+
+            catch (Exception ex)
+            {
+                lbltest.Text = "Error: " + ex.Message;
+            }
+            Response.Redirect("Profile.aspx");
+        }
     }
 }

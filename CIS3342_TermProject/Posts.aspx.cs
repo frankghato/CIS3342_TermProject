@@ -78,7 +78,6 @@ namespace CIS3342_TermProject
             }
             posts.OrderBy(p => p.Id).ToList();
             posts.Reverse();
-
         }
 
         public UserAccount getAccountFromUser(string username)

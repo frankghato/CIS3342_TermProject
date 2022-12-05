@@ -27,7 +27,7 @@
         </asp:Repeater>
 
         <h1>Your posts:</h1>
-        <asp:Repeater ID="rptPosts" runat="server" OnItemCommand="rptAccounts_ItemCommand">
+        <asp:Repeater ID="rptPosts" runat="server" OnItemCommand="rptPosts_ItemCommand">
             <ItemTemplate>
                 <div>
                     <asp:Label runat="server" ID="lblID" Visible="false" Text='<%# DataBinder.Eval(Container.DataItem, "Id") %>'>
