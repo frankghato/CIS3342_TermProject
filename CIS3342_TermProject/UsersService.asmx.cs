@@ -54,5 +54,38 @@ namespace CIS3342_TermProject
             }
             return users;
         }
+
+        [WebMethod]
+        public bool IsEmailInUse(string email)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_GetUsernameFromEmail";
+            objCommand.Parameters.AddWithValue("@theEmail", email);
+            DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
+
+            return myDS.Tables[0].Rows.Count > 0;
+        }
+
+        [WebMethod] 
+        public string GetEmailFromUsername(string username)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_GetEmailFromUsername";
+            objCommand.Parameters.AddWithValue("@theUsername", username);
+            DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
+
+            if(myDS.Tables[0].Rows.Count > 0)
+            {
+                return myDS.Tables[0].Rows[0]["EmailAddress"].ToString();
+            }
+
+            return "-1";
+        }
     }
 }

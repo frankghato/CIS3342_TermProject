@@ -18,6 +18,8 @@ namespace CIS3342_TermProject
         ArrayList profileImageKeys = new ArrayList();
         EmailSender emailSender = new EmailSender();
         SecurityQuestionService pxy = new SecurityQuestionService();
+        UsersService upxy = new UsersService();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             List<string> questions = pxy.GetSecurityQuestions();
@@ -68,9 +70,13 @@ namespace CIS3342_TermProject
             {
                 lblErrors.Text += "*Email cannot be empty.<br>";
             }
-            else if(!email.Contains("@") || !email.Contains("."))
+            else if (!email.Contains("@") || !email.Contains("."))
             {
                 lblErrors.Text += "*Email must be a valid email address.<br>";
+            }
+            else if (upxy.IsEmailInUse(tboxEmailAddress.Text))
+            {
+                lblErrors.Text += "*This email is already in use. Each email may only have 1 account.<br>";
             }
             if (username.Equals(""))
             {

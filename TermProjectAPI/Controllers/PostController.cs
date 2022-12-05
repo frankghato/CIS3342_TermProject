@@ -131,7 +131,7 @@ namespace TermProjectAPI.Controllers
 
             objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
             objCommand.CommandText = "TP_DeletePost";
-            objCommand.Parameters.AddWithValue("@theUsername", id);
+            objCommand.Parameters.AddWithValue("@thePostID", id);
 
             int updated = objDB.DoUpdateUsingCmdObj(objCommand);
             if (updated > 0)

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TermProjectClassLibrary;
 using TermProjectLibrary;
 
 namespace CIS3342_TermProject
@@ -14,10 +15,17 @@ namespace CIS3342_TermProject
     public partial class Login : System.Web.UI.Page
     {
         SecurityQuestionService pxy = new SecurityQuestionService();
+        UsersService upxy = new UsersService();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             lblErrors.Text = "";
+            if (!IsPostBack && Request.Cookies["LoginCookie"] != null)
+            {
+                HttpCookie loginCookie = Request.Cookies["LoginCookie"];
+                tboxUsername.Text = loginCookie.Values["Username"];
+                tboxPassword.Text = Encryption.DecryptPassword(loginCookie.Values["Password"]);
+            }
         }
 
         protected void btnForgotPassword_Click(object sender, EventArgs e)
@@ -132,7 +140,20 @@ namespace CIS3342_TermProject
                 else
                 {
                     //log in 
+
+                    HttpCookie loginCookie = new HttpCookie("LoginCookie");
+                    loginCookie.Values["Username"] = tboxUsername.Text;
+                    loginCookie.Values["Password"] = encryptedPw;
+                    Response.Cookies.Add(loginCookie);
+
                     lblErrors.Text = "Passwords match, proceed to login.";
+
+                    string email = upxy.GetEmailFromUsername(tboxUsername.Text);
+
+                    UserAccount user = new UserAccount(tboxUsername.Text, email, tboxPassword.Text);
+
+                    Session["SerializedAccount"] = Serialization.Serialize(user);
+
                     Response.Redirect("Posts.aspx?Username=" + tboxUsername.Text);
                 }
             }
