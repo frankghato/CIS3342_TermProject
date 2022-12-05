@@ -35,6 +35,11 @@ namespace TermProjectLibrary
             this.securityQuestion3Answer = securityQuestion3Answer;
         }
 
+        public UserAccount()
+        {
+
+        }
+
         public string Username { get => username; set => username = value; }
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
