@@ -8,6 +8,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:Label runat="server" ID="lbltest"></asp:Label>
+        <h1>Your followed accounts:</h1>
         <asp:Repeater ID="rptAccounts" runat="server" OnItemCommand="rptAccounts_ItemCommand">
             <ItemTemplate>
                 <div>
@@ -20,6 +22,22 @@
                     <asp:Label runat="server" ID="lblUsername" Text='<%# DataBinder.Eval(Container.DataItem, "Username") %>'>
                     </asp:Label><br />
                     <asp:Button runat="server" ID="btnUnfollow" Text="Unfollow" />
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+
+        <h1>Your posts:</h1>
+        <asp:Repeater ID="rptPosts" runat="server" OnItemCommand="rptAccounts_ItemCommand">
+            <ItemTemplate>
+                <div>
+                    <asp:Label runat="server" ID="lblID" Visible="false" Text='<%# DataBinder.Eval(Container.DataItem, "Id") %>'>
+                   </asp:Label>
+                   <asp:Label runat="server">Username: </asp:Label>
+                   <asp:Label runat="server" ID="lblUsername" Text='<%# DataBinder.Eval(Container.DataItem, "Username") %>'>
+                   </asp:Label><br />
+                   <asp:Label runat="server" ID="lblContent" Text='<%# DataBinder.Eval(Container.DataItem, "Content") %>'>
+                   </asp:Label><br />
+                   <asp:Button runat="server" ID="btnDelete" Text="Delete" />
                 </div>
             </ItemTemplate>
         </asp:Repeater>

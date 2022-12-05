@@ -14,12 +14,13 @@ namespace CIS3342_TermProject
     public partial class Profile : System.Web.UI.Page
     {
         UsersService upxy = new UsersService();
-        string username = "JacobTemple";
+        string username = "Jacob";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 loadAccounts();
+                loadPosts();
             }
         }
 
@@ -50,15 +51,7 @@ namespace CIS3342_TermProject
 
         public UserAccount getAccountFromUser(string username)
         {
-            WebRequest request = WebRequest.Create("https://localhost:44382/api/user/getaccount/" + username);
-            WebResponse response = request.GetResponse();
-            Stream dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            String data = reader.ReadToEnd();
-            reader.Close();
-            response.Close();
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            UserAccount u = js.Deserialize<UserAccount>(data);
+            UserAccount u = upxy.GetAccountFromUsername(username);
 
             return u;
         }
@@ -69,6 +62,23 @@ namespace CIS3342_TermProject
             Label lblusername = (Label)rptAccounts.Items[row].FindControl("lblUsername");
 
             upxy.Unfollow(lblusername.Text, username).ToString();
+        }
+
+        public void loadPosts()
+        {
+            WebRequest request = WebRequest.Create("https://localhost:44382/api/post/" + username);
+            WebResponse response = request.GetResponse();
+            Stream dataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(dataStream);
+            String data = reader.ReadToEnd();
+            reader.Close();
+            response.Close();
+            JavaScriptSerializer js = new JavaScriptSerializer();
+
+            Post[] posts = js.Deserialize<Post[]>(data);
+
+            rptPosts.DataSource = posts;
+            rptPosts.DataBind();
         }
     }
 }

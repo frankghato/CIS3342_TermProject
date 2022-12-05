@@ -149,28 +149,5 @@ namespace TermProjectAPI.Controllers
             }
             return usernames;
         }
-
-        [HttpGet("GetAccount/{username}")]
-        public UserAccount GetAccountFromUsername(string username) // Get Following
-        {
-            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
-            SqlCommand objCommand = new SqlCommand();
-
-            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
-            objCommand.CommandText = "TP_GetAccountByUsername";
-            objCommand.Parameters.AddWithValue("@theUsername", username);
-
-            DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
-            UserAccount u = new UserAccount();
-
-            if (myDS.Tables[0].Rows.Count != 0)
-            {
-                DataRow record = myDS.Tables[0].Rows[0];
-                u.FirstName = record["FirstName"].ToString();
-                u.LastName = record["LastName"].ToString();
-                u.Username = username;
-            }
-            return u;
-        }
     }
 }
