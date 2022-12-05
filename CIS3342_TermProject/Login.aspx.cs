@@ -129,7 +129,7 @@ namespace CIS3342_TermProject
 
             if(lblErrors.Text.Equals(""))
             {
-                WebRequest request = WebRequest.Create("https://localhost:44382/api/user/GetPasswordFromUsername/" + tboxUsername.Text);
+                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252//api/user/GetPasswordFromUsername/" + tboxUsername.Text);
                 WebResponse response = request.GetResponse();
                 Stream ds = response.GetResponseStream();
                 StreamReader reader = new StreamReader(ds);

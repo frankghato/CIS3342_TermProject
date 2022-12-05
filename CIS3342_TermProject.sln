@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIS3342_TermProject", "CIS3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermProjectLibrary", "TermProjectClassLibrary\TermProjectLibrary.csproj", "{783FF2AA-B2DD-43D7-83F2-536D311E1740}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermProjectAPI", "TermProjectAPI\TermProjectAPI.csproj", "{24B518A7-D7FF-4DE6-BC47-A2F4BCD4E4E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TermProjectAPI", "TermProjectAPI\TermProjectAPI.csproj", "{24B518A7-D7FF-4DE6-BC47-A2F4BCD4E4E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermProjectWebService", "TermProjectWebService\TermProjectWebService.csproj", "{59BD8A7F-5549-41CE-AC66-EE289DB3C407}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{24B518A7-D7FF-4DE6-BC47-A2F4BCD4E4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24B518A7-D7FF-4DE6-BC47-A2F4BCD4E4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24B518A7-D7FF-4DE6-BC47-A2F4BCD4E4E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59BD8A7F-5549-41CE-AC66-EE289DB3C407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BD8A7F-5549-41CE-AC66-EE289DB3C407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BD8A7F-5549-41CE-AC66-EE289DB3C407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BD8A7F-5549-41CE-AC66-EE289DB3C407}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

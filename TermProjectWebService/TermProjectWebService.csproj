@@ -7,23 +7,22 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{65E1E9A7-98DC-40AF-87A5-2E33F05C380D}</ProjectGuid>
+    <ProjectGuid>{59BD8A7F-5549-41CE-AC66-EE289DB3C407}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CIS3342_TermProject</RootNamespace>
-    <AssemblyName>CIS3342_TermProject</AssemblyName>
+    <RootNamespace>TermProjectWebService</RootNamespace>
+    <AssemblyName>TermProjectWebService</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44398</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,21 +44,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -67,66 +67,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EmailConfirmation.aspx" />
-    <Content Include="Login.aspx" />
-    <Content Include="NewPostUserControl.ascx" />
-    <Content Include="Posts.aspx" />
-    <Content Include="PostsUserControl.ascx" />
-    <Content Include="Profile.aspx" />
-    <Content Include="RegisterAccount.aspx" />
-    <Content Include="scripts\FormValidation.js" />
+    <Content Include="PostsService.asmx" />
+    <Content Include="SecurityQuestionService.asmx" />
+    <Content Include="UsersService.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmailConfirmation.aspx.cs">
-      <DependentUpon>EmailConfirmation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EmailConfirmation.aspx.designer.cs">
-      <DependentUpon>EmailConfirmation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NewPostUserControl.ascx.cs">
-      <DependentUpon>NewPostUserControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NewPostUserControl.ascx.designer.cs">
-      <DependentUpon>NewPostUserControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Posts.aspx.cs">
-      <DependentUpon>Posts.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Posts.aspx.designer.cs">
-      <DependentUpon>Posts.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="PostsUserControl.ascx.cs">
-      <DependentUpon>PostsUserControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PostsUserControl.ascx.designer.cs">
-      <DependentUpon>PostsUserControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Profile.aspx.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Profile.aspx.designer.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="PostsService.asmx.cs">
+      <DependentUpon>PostsService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterAccount.aspx.cs">
-      <DependentUpon>RegisterAccount.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="SecurityQuestionService.asmx.cs">
+      <DependentUpon>SecurityQuestionService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="RegisterAccount.aspx.designer.cs">
-      <DependentUpon>RegisterAccount.aspx</DependentUpon>
+    <Compile Include="UsersService.asmx.cs">
+      <DependentUpon>UsersService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -139,16 +97,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\profileimages\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\TermProjectClassLibrary\TermProjectLibrary.csproj">
-      <Project>{783ff2aa-b2dd-43d7-83f2-536d311e1740}</Project>
+      <Project>{783FF2AA-B2DD-43D7-83F2-536D311E1740}</Project>
       <Name>TermProjectLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TermProjectWebService\TermProjectWebService.csproj">
-      <Project>{59bd8a7f-5549-41ce-ac66-ee289db3c407}</Project>
-      <Name>TermProjectWebService</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -164,9 +115,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54851</DevelopmentServerPort>
+          <DevelopmentServerPort>51087</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54851/</IISUrl>
+          <IISUrl>https://localhost:44398/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
