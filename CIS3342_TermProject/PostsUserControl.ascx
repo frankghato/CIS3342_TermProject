@@ -7,4 +7,5 @@
     <asp:Label ID="lblDislikes" runat="server"></asp:Label><br />
     <asp:Button ID="btnLike" runat="server" Text="Like" OnClick="btnLike_Click"/>
     <asp:Button ID="btnDislike" runat="server" Text="Dislike" OnClick="btnDislike_Click"/>
+    <asp:Button ID="btnFollow" runat="server" Text="FollowUser" OnClick="btnFollow_Click" />
 </div>

@@ -136,7 +136,7 @@ namespace CIS3342_TermProject
             SqlCommand objCommand = new SqlCommand();
 
             objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
-            objCommand.CommandText = "TP_Addpost";
+            objCommand.CommandText = "TP_FollowUserName";
             objCommand.Parameters.AddWithValue("@theUsername", account);
             objCommand.Parameters.AddWithValue("@theUsernameToFollow", followUser);
 
