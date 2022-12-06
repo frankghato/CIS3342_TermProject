@@ -34,7 +34,14 @@ namespace CIS3342_TermProject
             newPostControl.username = username;
             Form.Controls.Add(newPostControl);
 
-            loadPosts("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/post");
+            if (Session["TypeofPosts"] == null || (string)Session["TypeofPosts"] == "All")
+            {
+                loadPosts("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/post");
+            }
+            else
+            {
+                LoadPostsByFollowedUsers();
+            }
         }
 
         public void loadPosts(string apiurl)
@@ -120,6 +127,16 @@ namespace CIS3342_TermProject
         {
             Session.Remove("SerializedAccount");
             Response.Redirect("Login.aspx");
+        }
+
+        protected void btnFollowedPosts_Click(object sender, EventArgs e)
+        {
+            Session["TypeofPosts"] = "Follow";
+        }
+
+        protected void btnAllPosts_Click(object sender, EventArgs e)
+        {
+            Session["TypeofPosts"] = "All";
         }
     }
 }

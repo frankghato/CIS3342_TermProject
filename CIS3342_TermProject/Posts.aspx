@@ -75,6 +75,8 @@
         </nav>
     </div>
         <h1>Posts</h1>
+        <asp:Button runat="server" ID="btnFollowedPosts" Text="View Followed Posts" OnClick="btnFollowedPosts_Click"/>
+        <asp:Button runat="server" ID="btnAllPosts" Text="View All Posts" OnClick="btnAllPosts_Click"/>
         <div>
         </div>
     </form>
