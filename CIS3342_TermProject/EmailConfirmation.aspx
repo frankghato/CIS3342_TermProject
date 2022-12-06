@@ -11,7 +11,7 @@
         <div style="padding-top:5px;padding-bottom:5px;color:white; width:50%; margin:0 auto;margin-top:25px; text-align:center;">
             <h1>Thank you for confirming your account.</h1>
             <p id="welcomeMessage" runat="server"></p>
-            <a href="Home.aspx">Click here to go to the home page.</a>
+            <a style="color:white;" href="Login.aspx">Click here to go to the login page.</a>
         </div>
     </form>
 </body>
