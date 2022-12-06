@@ -158,7 +158,7 @@ namespace CIS3342_TermProject
             objCommand.CommandText = "TP_AddUser";
             objCommand.Parameters.AddWithValue("@theUsername", user.Username);
             objCommand.Parameters.AddWithValue("@theFirstName", user.FirstName);
-            objCommand.Parameters.AddWithValue("@theUsername", user.LastName);
+            objCommand.Parameters.AddWithValue("@theLastName", user.LastName);
             objCommand.Parameters.AddWithValue("@theEmail", user.Email);
             objCommand.Parameters.AddWithValue("@theProfileImageKey", user.ProfileImageKey);
             objCommand.Parameters.AddWithValue("@thePassword", user.Password);
