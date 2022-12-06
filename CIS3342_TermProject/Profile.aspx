@@ -70,7 +70,7 @@
             <ul>
                 <li><a href="Posts.aspx">View Posts</a></li>
                 <li><a href="Profile.aspx">View Your Profile</a></li>
-                <li><asp:Button ID="btnLogout" runat="server" Text="Logout"/></li>
+                <li><asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click"/></li>
             </ul>
         </nav>
     </div>

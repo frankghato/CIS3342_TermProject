@@ -115,5 +115,11 @@ namespace CIS3342_TermProject
 
             return u;
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Remove("SerializedAccount");
+            Response.Redirect("Login.aspx");
+        }
     }
 }
