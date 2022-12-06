@@ -43,7 +43,7 @@ namespace CIS3342_TermProject
             Response.Cookies.Add(loginCookie);
             btnClearCookie.Visible = false;
             tboxPassword.Text = "";
-            tboxUsername.Text = "";
+            tboxUsername.Text ="";
         }
 
         protected void btnForgotPassword_Click(object sender, EventArgs e)
