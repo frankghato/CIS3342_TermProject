@@ -27,7 +27,7 @@ namespace CIS3342_TermProject
             String jsonPost = js.Serialize(p);
             try
             {
-                WebRequest request = WebRequest.Create("https://localhost:44382/api/post/LikePost");
+                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapi/api/post/LikePost");
                 request.Method = "PUT";
                 request.ContentLength = jsonPost.Length;
                 request.ContentType = "application/json";
@@ -58,7 +58,7 @@ namespace CIS3342_TermProject
             String jsonPost = js.Serialize(p);
             try
             {
-                WebRequest request = WebRequest.Create("https://localhost:44382/api/post/DislikePost");
+                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapi/api/post/DislikePost");
                 request.Method = "PUT";
                 request.ContentLength = jsonPost.Length;
                 request.ContentType = "application/json";
