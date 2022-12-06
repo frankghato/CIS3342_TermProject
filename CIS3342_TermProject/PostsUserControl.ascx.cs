@@ -14,6 +14,8 @@ namespace CIS3342_TermProject
     public partial class PostsUserControl : System.Web.UI.UserControl
     {
         public Post p;
+        UsersService upxy = new UsersService();
+        string useraccount = "Jacob";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -87,6 +89,12 @@ namespace CIS3342_TermProject
             lblUsername.Text = p.Username;
             lblLikes.Text = p.Likes.ToString();
             lblDislikes.Text = p.Dislikes.ToString();
+        }
+
+        protected void btnFollow_Click(object sender, EventArgs e)
+        {
+            upxy.FollowUser(p.Username, useraccount);
+            Response.Redirect("Posts.aspx");
         }
     }
 }
