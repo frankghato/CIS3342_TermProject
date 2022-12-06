@@ -4,10 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
-<body>
+<body style="background:#1e1f21; color:white;">
     <form id="form1" runat="server">
+        <h1>Posts</h1>
         <div>
         </div>
     </form>
