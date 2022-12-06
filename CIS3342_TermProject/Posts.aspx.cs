@@ -132,11 +132,13 @@ namespace CIS3342_TermProject
         protected void btnFollowedPosts_Click(object sender, EventArgs e)
         {
             Session["TypeofPosts"] = "Follow";
+            Response.Redirect("Posts.aspx");
         }
 
         protected void btnAllPosts_Click(object sender, EventArgs e)
         {
             Session["TypeofPosts"] = "All";
+            Response.Redirect("Posts.aspx");
         }
     }
 }
