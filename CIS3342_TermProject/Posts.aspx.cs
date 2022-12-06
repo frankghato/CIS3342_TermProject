@@ -91,6 +91,14 @@ namespace CIS3342_TermProject
             }
             posts.OrderBy(p => p.Id).ToList();
             posts.Reverse();
+
+            for (int i = 0; i < posts.Count; i++)
+            {
+                PostsUserControl postControl = (PostsUserControl)LoadControl("PostsUserControl.ascx");
+                postControl.p = posts[i];
+                postControl.showPost();
+                Form.Controls.Add(postControl);
+            }
         }
 
         public UserAccount getAccountFromUser(string username)
