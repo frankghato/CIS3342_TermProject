@@ -36,7 +36,7 @@ namespace CIS3342_TermProject
 
             if (Session["TypeofPosts"] == null || (string)Session["TypeofPosts"] == "All")
             {
-                loadPosts("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/post");
+                loadPosts("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapi/api/post");
             }
             else
             {
@@ -69,7 +69,7 @@ namespace CIS3342_TermProject
         public void LoadPostsByFollowedUsers()
         {
             List<UserAccount> followedUsers = new List<UserAccount>();
-            WebRequest request = WebRequest.Create("https://localhost:44382/api/user/getfollowing/" + username);
+            WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapi/api/user/getfollowing/" + username);
             WebResponse response = request.GetResponse();
             Stream dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);
@@ -82,7 +82,7 @@ namespace CIS3342_TermProject
             List<Post> posts = new List<Post>();
             for(int i = 0; i < usernames.Length; i++)
             {
-                request = WebRequest.Create("https://localhost:44382/api/post/" + usernames[i]);
+                request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapi/api/post/" + usernames[i]);
                 response = request.GetResponse();
                 dataStream = response.GetResponseStream();
                 reader = new StreamReader(dataStream);
@@ -110,7 +110,7 @@ namespace CIS3342_TermProject
 
         public UserAccount getAccountFromUser(string username)
         {
-            WebRequest request = WebRequest.Create("https://localhost:44382/api/user/getaccount/" + username);
+            WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapi/api/user/getaccount/" + username);
             WebResponse response = request.GetResponse();
             Stream dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);

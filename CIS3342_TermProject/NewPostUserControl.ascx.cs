@@ -33,7 +33,7 @@ namespace CIS3342_TermProject
                 String jsonPost = js.Serialize(p);
                 try
                 {
-                    WebRequest request = WebRequest.Create("https://localhost:44382/api/post/AddPost");
+                    WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapi/api/post/AddPost");
                     request.Method = "POST";
                     request.ContentLength = jsonPost.Length;
                     request.ContentType = "application/json";

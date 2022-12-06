@@ -87,7 +87,7 @@ namespace CIS3342_TermProject
             if(tboxSecurityQuestionAnswer.Text.Equals(Session["answer"].ToString()))
             {
                 loginInformationDiv.Style.Add("visibility", "visible");
-                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/user/GetUsername/" + Session["email"].ToString());
+                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapi/api/user/GetUsername/" + Session["email"].ToString());
                 WebResponse response = request.GetResponse();
                 Stream ds = response.GetResponseStream();
                 StreamReader reader = new StreamReader(ds);
@@ -98,7 +98,7 @@ namespace CIS3342_TermProject
                 string username = data;
 
                 
-                request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/user/GetPasswordFromUsername/" + username);
+                request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapi/api/user/GetPasswordFromUsername/" + username);
                 response = request.GetResponse();
                 ds = response.GetResponseStream();
                 reader = new StreamReader(ds);
@@ -131,7 +131,7 @@ namespace CIS3342_TermProject
 
             if(lblErrors.Text.Equals(""))
             {
-                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/user/GetPasswordFromUsername/" + tboxUsername.Text);
+                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapi/api/user/GetPasswordFromUsername/" + tboxUsername.Text);
                 WebResponse response = request.GetResponse();
                 Stream ds = response.GetResponseStream();
                 StreamReader reader = new StreamReader(ds);
