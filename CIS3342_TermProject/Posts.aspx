@@ -48,7 +48,7 @@
             display: block;
             height: 5px;
             width: 100%;
-            background-color: #bd0661;
+            background-color: #edc04e;
             position: absolute;
             top:0;
             width:0%;
@@ -62,7 +62,7 @@
 
         nav a:hover
         {
-            color:#bd0661;
+            color:#edc04e;
         }
     </style>
         <div>

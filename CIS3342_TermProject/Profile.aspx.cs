@@ -40,7 +40,7 @@ namespace CIS3342_TermProject
         {
             List<UserAccount> followedUsers = new List<UserAccount>();
 
-            WebRequest request = WebRequest.Create("https://localhost:44382/api/user/getfollowing/" + username);
+            WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/user/getfollowing/" + username);
             WebResponse response = request.GetResponse();
             Stream dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);
@@ -78,7 +78,7 @@ namespace CIS3342_TermProject
 
         public void loadPosts()
         {
-            WebRequest request = WebRequest.Create("https://localhost:44382/api/post/" + username);
+            WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/post/" + username);
             WebResponse response = request.GetResponse();
             Stream dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);
@@ -101,7 +101,7 @@ namespace CIS3342_TermProject
 
             try
             {
-                WebRequest request = WebRequest.Create("https://localhost:44382/api/post/DeletePost/" + id);
+                WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/post/DeletePost/" + id);
                 request.Method = "DELETE";
 
                 WebResponse response = request.GetResponse();
