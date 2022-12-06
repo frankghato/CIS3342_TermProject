@@ -12,23 +12,34 @@ namespace CIS3342_TermProject
 {
     public partial class EmailConfirmation : System.Web.UI.Page
     {
-        string email;
+        UsersService upxy = new UsersService();
+
+        string username;
         protected void Page_Load(object sender, EventArgs e)
         {
-            email = Request.QueryString["Email"];
-            if (email == null || email.Equals(""))
+            username = Request.QueryString["Username"];
+            if (username == null || username.Equals(""))
             {
                 Response.Redirect("Login.aspx");
             }
             else
             {
-                welcomeMessage.InnerText = email + ", thank you for confirming your account.";
+                
+                bool wasConfirmed = upxy.ConfirmEmailOfUsername(username);
+                if(wasConfirmed)
+                {
+                    welcomeMessage.InnerText = username + ", thank you for confirming your account.";
+                }
+                else
+                {
+                    welcomeMessage.InnerText = "error";
+                }
 
-                JavaScriptSerializer js = new JavaScriptSerializer();
+                /*JavaScriptSerializer js = new JavaScriptSerializer();
                 String jsonEmail = js.Serialize(email);
                 try
                 {
-                    WebRequest request = WebRequest.Create("https://localhost:44382/api/user/ConfirmEmail");
+                    WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/user/ConfirmEmail");
                     request.Method = "PUT";
                     request.ContentLength = jsonEmail.Length;
                     request.ContentType = "application/json";
@@ -49,7 +60,7 @@ namespace CIS3342_TermProject
                 catch (Exception ex)
                 {
                     welcomeMessage.InnerText = "Error: " + ex.Message;
-                }
+                }*/
 
             }
         }

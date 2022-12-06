@@ -177,5 +177,22 @@ namespace CIS3342_TermProject
             }
             return false;
         }
+
+        [WebMethod]
+        public Boolean ConfirmEmailOfUsername(string username)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_ConfirmEmailOfUsername";
+            objCommand.Parameters.AddWithValue("@theUsername", username);
+            int updated = objDB.DoUpdateUsingCmdObj(objCommand);
+            if (updated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

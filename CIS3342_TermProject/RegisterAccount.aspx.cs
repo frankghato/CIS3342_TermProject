@@ -130,6 +130,27 @@ namespace CIS3342_TermProject
             else
             {
                 UserAccount user = new UserAccount(username, firstName, lastName, email, password, homeAddress, billingAddress, phoneNumber, ddlProfileImage.SelectedValue, "No", question1, question2, question3);
+                bool wasUserAdded = upxy.AddUser(user);
+                if(wasUserAdded)
+                {
+                    lblErrors.Text = "Account was created sucessfully.";
+                    bool sent = emailSender.SendConfirmationEmail(user.Email, user.Username);
+                    if (sent)
+                    {
+                        lblErrors.Text = "Account successfully created!<br>Please check your email for the confirmation link.";
+                        lblErrors.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6fd656");
+                    }
+                    else
+                    {
+                        lblErrors.Text = "Email could not be sent.";
+                    }
+                }
+                else
+                {
+                    lblErrors.Text = "*Account could not be created.";
+                }
+
+                /*UserAccount user = new UserAccount(username, firstName, lastName, email, password, homeAddress, billingAddress, phoneNumber, ddlProfileImage.SelectedValue, "No", question1, question2, question3);
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 String jsonUser = js.Serialize(user);
                 try
@@ -164,7 +185,7 @@ namespace CIS3342_TermProject
                 catch (Exception ex)
                 {
                     lblErrors.Text = "Error: " + ex.Message;
-                }
+                }*/
             }    
         }
     }

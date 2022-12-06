@@ -12,7 +12,7 @@ namespace TermProjectLibrary
 
         }
 
-        public Boolean SendConfirmationEmail(string emailAddress)
+        public Boolean SendConfirmationEmail(string emailAddress, string username)
         {
             try
             {
@@ -20,7 +20,7 @@ namespace TermProjectLibrary
                 message.To.Add(emailAddress);
                 message.From = new MailAddress("mail@socialmedia.com");
                 message.Subject = "Confirm your email";
-                message.Body = "Please click this link to confirm your email address: https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/termproject/EmailConfirmation.aspx?Email=" + emailAddress;
+                message.Body = "Please click this link to confirm your email address: https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/termproject/EmailConfirmation.aspx?Email=" + username;
                 message.IsBodyHtml = true;
                 message.Priority = MailPriority.Normal;
                 SmtpClient mailClient = new SmtpClient("smtp.temple.edu");
