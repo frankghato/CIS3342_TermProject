@@ -147,5 +147,35 @@ namespace CIS3342_TermProject
             }
             return false;
         }
+
+        [WebMethod]
+        public Boolean AddUser(UserAccount user)
+        {
+            DBConnect objDB = new DBConnect(); // SQL Objects needed for calls
+            SqlCommand objCommand = new SqlCommand();
+
+            objCommand.CommandType = CommandType.StoredProcedure; // Set type to procedure
+            objCommand.CommandText = "TP_AddUser";
+            objCommand.Parameters.AddWithValue("@theUsername", user.Username);
+            objCommand.Parameters.AddWithValue("@theFirstName", user.FirstName);
+            objCommand.Parameters.AddWithValue("@theUsername", user.LastName);
+            objCommand.Parameters.AddWithValue("@theEmail", user.Email);
+            objCommand.Parameters.AddWithValue("@theProfileImageKey", user.ProfileImageKey);
+            objCommand.Parameters.AddWithValue("@thePassword", user.Password);
+            objCommand.Parameters.AddWithValue("@theHomeAddress", user.HomeAddress);
+            objCommand.Parameters.AddWithValue("@theBillingAddress", user.BillingAddress);
+            objCommand.Parameters.AddWithValue("@thePhoneNumber", user.PhoneNumber);
+            objCommand.Parameters.AddWithValue("@theIsEmailConfirmed", user.IsEmailConfirmed);
+            objCommand.Parameters.AddWithValue("@theSecurityQuestion1Answer", user.SecurityQuestion1Answer);
+            objCommand.Parameters.AddWithValue("@theSecurityQuestion2Answer", user.SecurityQuestion2Answer);
+            objCommand.Parameters.AddWithValue("@theSecurityQuestion3Answer", user.SecurityQuestion3Answer);
+            
+            int updated = objDB.DoUpdateUsingCmdObj(objCommand);
+            if (updated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

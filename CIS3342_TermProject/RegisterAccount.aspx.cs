@@ -134,7 +134,7 @@ namespace CIS3342_TermProject
                 String jsonUser = js.Serialize(user);
                 try
                 {
-                    WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/user/AddUser/");
+                    WebRequest request = WebRequest.Create("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/user/AddUser");
                     request.Method = "POST";
                     request.ContentLength = jsonUser.Length;
                     request.ContentType = "application/json";
@@ -149,8 +149,6 @@ namespace CIS3342_TermProject
                     String data = reader.ReadToEnd();
                     reader.Close();
                     response.Close();
-                    lblErrors.Text = "Account successfully created!";
-                    lblErrors.ForeColor = System.Drawing.ColorTranslator.FromHtml("#6fd656");
 
                     bool sent = emailSender.SendConfirmationEmail(email);
                     if (sent)
@@ -163,7 +161,7 @@ namespace CIS3342_TermProject
                         lblErrors.Text = "Email could not be sent.";
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     lblErrors.Text = "Error: " + ex.Message;
                 }
