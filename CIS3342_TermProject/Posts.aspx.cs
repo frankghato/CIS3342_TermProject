@@ -8,16 +8,30 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TermProjectClassLibrary;
 using TermProjectLibrary;
 
 namespace CIS3342_TermProject
 {
     public partial class Posts : System.Web.UI.Page
     {
+        UserAccount user = new UserAccount();
+        string username = "";
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["SerializedAccount"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                string jsonUsername = (string)Session["SerializedAccount"];
+                user = Serialization.Deserialize(jsonUsername);
+                username = user.Username;
+            }
+
             NewPostUserControl newPostControl = (NewPostUserControl)LoadControl("NewPostUserControl.ascx");
-            newPostControl.username = "JacobJablonski";
+            newPostControl.username = username;
             Form.Controls.Add(newPostControl);
 
             loadPosts("https://cis-iis2.temple.edu/Fall2022/CIS3342_tuh03252/webapitest/api/post");
@@ -48,7 +62,6 @@ namespace CIS3342_TermProject
         public void LoadPostsByFollowedUsers()
         {
             List<UserAccount> followedUsers = new List<UserAccount>();
-            string username = "";
             WebRequest request = WebRequest.Create("https://localhost:44382/api/user/getfollowing/" + username);
             WebResponse response = request.GetResponse();
             Stream dataStream = response.GetResponseStream();

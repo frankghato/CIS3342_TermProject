@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TermProjectClassLibrary;
 using TermProjectLibrary;
 
 namespace CIS3342_TermProject
@@ -14,11 +15,22 @@ namespace CIS3342_TermProject
     public partial class Profile : System.Web.UI.Page
     {
         UsersService upxy = new UsersService();
-        string username = "Jacob";
+        UserAccount user = new UserAccount();
+        string username = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (Session["SerializedAccount"] == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                else
+                {
+                    string jsonUsername = (string)Session["SerializedAccount"];
+                    user = Serialization.Deserialize(jsonUsername);
+                    username = user.Username;
+                }
                 loadAccounts();
                 loadPosts();
             }
